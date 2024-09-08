@@ -6005,6 +6005,14 @@ struct chain_lightning_t : public chained_base_t
     if ( trigger_elemental_overload( s ) )
     {
       trigger_elemental_overload( s, p()->talent.supercharge->effectN( 1 ).percent() );
+
+      if ( p()->is_ptr() )
+      {
+        if ( p()->buff.ascendance->up() )
+        {
+          trigger_elemental_overload( s, 1.0 );
+        }
+      }
     }
 
     // Don't call shaman_spell_t::schedule_travel, because we need to override .. override behavior
