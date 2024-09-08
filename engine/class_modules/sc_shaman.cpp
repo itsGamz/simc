@@ -6040,9 +6040,12 @@ struct lava_beam_t : public chained_base_t
 
   bool ready() override
   {
-    if ( !p()->buff.ascendance->check() )
+    if ( !p()->is_ptr() )
     {
-      return false;
+      if ( !p()->buff.ascendance->check() )
+      {
+        return false;
+      }
     }
 
     return shaman_spell_t::ready();
